@@ -1,0 +1,36 @@
+#Sample data
+
+Burgers:
+    - Date: 11/12/2016
+    - Amount: 45.34
+    - Tags: entertainment
+
+Sushi:
+    - Date: 11/12/2016
+    - Amount: 12.00
+    - Tags: entertainment
+
+Work:
+    - Date: 12/12/2016
+    - Amount: 400
+    - Tags: income
+
+Interest:
+    - Date: 14/12/2016
+    - Amount: 1.46
+    - Tags: income
+
+Mouse:
+    - Date: 15/12/2016
+    - Amount: 45.66
+    - Tags: tech
+
+Batman Begins:
+    - Date: 17/12/2016
+    - Amount: 12.00
+    - Tags: entertainment
+
+Work:
+    - Date: 19/12/2016
+    - Amount: 245.99
+    - Tags: work
