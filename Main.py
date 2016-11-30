@@ -40,15 +40,9 @@ def main_menu():
 def account_summary():
     print("Not done yet!")
 
-#This will add a transaction to the data base.   
-#Will write to the file, date, cost, inflow/ outflow, category
-def add_transaction():
-    print("Not done yet!")
 	
 def main():
-    print(123)
     main_menu()
-    print(456)
     #filename = input("Enter filename: ")
     filename = "Pratice data.yaml"
     file_reader(filename)
