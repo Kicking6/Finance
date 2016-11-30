@@ -1,4 +1,4 @@
-import yaml
+import sqlite3
 
 def file_reader(filename):
 	file = open(filename, "r")
