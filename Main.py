@@ -1,7 +1,7 @@
 import sqlite3
+import easygui
 
 def file_reader(filename):
-<<<<<<< HEAD
     file = open(filename, "r")
     contents = yaml.load(file) # this will change depending on file type
     print(contents)
@@ -39,16 +39,6 @@ def main_menu():
 
 #This will return to the user a file and/ or readout (Not decided yet) of their account            
 def account_summary():
-    print("Not done yet!")
-
-	
-=======
-	file = open(filename, "r")
-	#contents = yaml.load(file) # this will change depending on file type
-	#print(contents)
-	print("Not done yet")
-
-def user_input():
 	print("Not done yet")
 
 # Creates the Gui. what else is there to say?
@@ -90,9 +80,6 @@ def add_transaction():
 def account_summary_GUI():
 	print("Not dont yet")
 
-
-
->>>>>>> origin/master
 def main():
     main_menu()
     #filename = input("Enter filename: ")
