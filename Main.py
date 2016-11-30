@@ -1,5 +1,5 @@
 import sqlite3
-import easygui
+import easygui as EG
 
 def file_reader(filename):
     file = open(filename, "r")
@@ -81,10 +81,11 @@ def account_summary_GUI():
 	print("Not dont yet")
 
 def main():
-    main_menu()
+    drawGui()
+    # main_menu()
     #filename = input("Enter filename: ")
     filename = "Pratice data.yaml"
-    file_reader(filename)
+    # file_reader(filename)
     print("Not done yet")
 
 main()
