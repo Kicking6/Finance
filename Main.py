@@ -10,25 +10,6 @@ def file_reader(filename):
 def user_input():
 	print("Not done yet")
 
-
-def add_transaction():
-	msg = "Please enter the details of this transaction"
-	title = "Rory's Financerifier"
-	fields = ["Amount", "Category", "Date", "Inflow or Outflow?"]
-
-
-	transactionValues = EG.multenterbox(msg, title, fields)
-
-	# Connects to the database
-	conn = sqlite3.connect("transactions.db")
-	c = conn.cursor()
-	c.execute("INSERT INTO transactions (amount, category, date, inflow_or_outflow) VALUES (?,?,?,?);", tuple(transactionValues))
-
-	# Commits the changes
-	conn.commit()
-	c.close()
-
-
 # Creates the Gui. what else is there to say?
 def drawGui():
 	mainMenuChoices = ["View Account Summary", "Add a Transaction"]
@@ -42,6 +23,26 @@ def drawGui():
 		add_transaction()
 	else:
 		pass
+
+# Creates a GUI and allows someone to add a transaction
+#TODO: Data validation. Make sure people aren't entering bad things they shouldn't.
+def add_transaction():
+	msg = "Please enter the details of this transaction"
+	title = "Rory's Financerifier"
+	fields = ["Amount", "Category", "Date", "Inflow or Outflow?"]
+
+	transactionValues = EG.multenterbox(msg, title, fields)
+
+	# Connects to the database
+	conn = sqlite3.connect("transactions.db")
+	c = conn.cursor()
+	c.execute("INSERT INTO transactions (amount, category, date, inflow_or_outflow) VALUES (?,?,?,?);",
+			  tuple(transactionValues))
+
+	# Commits the changes
+	conn.commit()
+	c.close()
+
 
 # Draws the GUI for the account summary.
 # Maybe you want to get the account summary first? Maybe this calls that function? Just a placeholder for now.
