@@ -1,0 +1,23 @@
+# This should grab transaction data/history from ASB
+# Either scrapes HTML, or downloads the csv data. Don't know yet which to do.
+
+#This will be updated to True when any of this actually works :/
+works = False
+
+
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://online.asb.co.nz/auth/login"
+payload = {
+    'authnMod':'AsbRgyAuthn',
+    'action':'login',
+    'secfk': 'ZCQK-H385-OLK7-M3E6-8E8N-IL4K-45GL-B102',
+    'goto': 'https://online.asb.co.nz/fnc',
+    'dUsername': 'USER',
+    'password': 'PASS',
+    'Log in button': 'Log In' #Is this one needed?
+}
+
+r = requests.post(url, data=payload)
