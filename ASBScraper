@@ -4,20 +4,57 @@
 #This will be updated to True when any of this actually works :/
 works = False
 
-
-
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://online.asb.co.nz/auth/login"
+url = "https://online.asb.co.nz/auth/?fm=header:login"
+
+with
+#Sets up session object
+session_requests = requests.session()
+login_page = session_requests.get(url)
+
+data = login_page.text
+soup = BeautifulSoup(data, "html.parser")
+# There seems to be a unique input value that changes everytime you visit the page.
+# So we need to scrape the page first and find that unique value for this session
+secfk = soup.find_all('input', {'name':'secfk'})[0]
+# It's not pretty, but string slicing gets the job done
+# I don't know if the length of the value would change? If it does, then this would break
+# So might need to look into regex or something fancier?
+secfk = str(secfk)[41:80]
+
+
+
 payload = {
     'authnMod':'AsbRgyAuthn',
     'action':'login',
-    'secfk': 'ZCQK-H385-OLK7-M3E6-8E8N-IL4K-45GL-B102',
+    'secfk': secfk,
     'goto': 'https://online.asb.co.nz/fnc',
+    'username': 'USER',
+    'MSISDN': '',
     'dUsername': 'USER',
     'password': 'PASS',
-    'Log in button': 'Log In' #Is this one needed?
+    'remember_me': 'false'
+    #Is this one needed?
 }
 
-r = requests.post(url, data=payload)
+r = session_requests.post(url, data=payload, headers = dict(referer="https://online.asb.co.nz/auth/login"))
+
+'''
+Alternative approach
+This seemed to work? Maybe?
+
+
+from robobrowser import RoboBrowser
+
+url = 'https://online.asb.co.nz/auth/?fm=header:login'
+browser = RoboBrowser(user_agent='a python robot')
+browser.open(url)
+
+form = browser.get_form(id='login')
+form['username'].value = 'USER'
+form['dUsername'].value = 'USER'
+form['password'].value = 'PASS'
+browser.submit_form(form)
+'''
